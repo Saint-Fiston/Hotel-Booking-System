@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Palace | The Palace Experiences</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F8FF;
+            margin: 0;
+            padding: 0;
+            color: #000000;
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: #98B3F9;
+        }
+        
+        .search-bar {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+        
+        .search-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .search-form input, 
+        .search-form select {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            flex: 1;
+            min-width: 150px;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .search-form button {
+            padding: 12px 25px;
+            background: #98B3F9;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .search-form button:hover {
+            background: #7a9bf7;
+        }
+        
+        .error {
+            border-color: #ff6b6b !important;
+        }
+        
+        .error-message {
+            color: #ff6b6b;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        footer {
+            background: #98B3F9;
+            color: #000000;
+            padding: 50px 0 20px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+            padding: 0 15px;
+        }
+
+        .footer-section h3 {
+            color: #000000;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .footer-section p {
+            margin: 10px 0;
+            line-height: 1.6;
+            font-weight: 300;
+            color: #000000;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #000000;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 300;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ffffff;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: #000000;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ffffff;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0,0,0,0.2);
+            margin-top: 30px;
+            font-size: 14px;
+            color: #000000;
+            font-weight: 300;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+        }
+
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-weight: 300;
+            color: #000000;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: #000000;
+            width: 20px;
+            text-align: center;
+        }
+        
+        header {
+            background-color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #000000;
+        }
+        
+        .logo span {
+            color: #98B3F9;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav ul li a {
+            font-weight: 500;
+            transition: color 0.3s;
+            color: #000000;
+        }
+        
+        nav ul li a:hover {
+            color: #98B3F9;
+        }
+        
+        .hero {
+            background-color: #F0F8FF;
+            color: #000000;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #000000;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            font-weight: 300;
+            color: #000000;
+        }
+        
+        .special-offers {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            font-weight: 600;
+            color: #000000;
+        }
+        
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .offer-card {
+            background-color: #F0F8FF;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .offer-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .offer-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #000000;
+            font-weight: 600;
+        }
+        
+        .offer-card p {
+            margin-bottom: 20px;
+            font-weight: 300;
+            color: #000000;
+        }
+        
+        .discount {
+            display: inline-block;
+            background-color: #98B3F9;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .book-offer {
+            display: inline-block;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .book-offer:hover {
+            background-color: #98B3F9;
+            color: white;
+        }
+
+        /* NEW LOGIN SECTION STYLES */
+        .login-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .login-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 40px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .login-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .login-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #000;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .login-form input:focus {
+            outline: none;
+            border-color: #98B3F9;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: #98B3F9;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        .login-btn:hover {
+            background: #7a9bf7;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #000;
+        }
+
+        .register-link a {
+            color: #98B3F9;
+            font-weight: 500;
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-top: -15px;
+            margin-bottom: 15px;
+        }
+
+        .forgot-password a {
+            color: #98B3F9;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        
+        .signup-form {
+            display: none;
+        }
+
+        .signup-form .form-group {
+            margin-bottom: 15px;
+        }
+
+        .signup-form input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .signup-btn {
+            width: 100%;
+            padding: 14px;
+            background: #98B3F9;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        .signup-btn:hover {
+            background: #7a9bf7;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #000;
+        }
+
+        .login-link a {
+            color: #98B3F9;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 20px;
+            }
+        }
+
+        
+        .reviews {
+            padding: 80px 0;
+            background-color: #F0F8FF;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .review-content p {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .reviewer h4 {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .reviewer p {
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+    
+    <section id="payment" class="login-section">
+        <div class="container">
+            <div class="login-container">
+                <h2 class="login-title">Payment Details</h2>
+                <form class="login-form" id="paymentForm">
+                    <div class="form-group">
+                        <label for="cardName">Cardholder Name</label>
+                        <input type="text" id="cardName" name="cardName" placeholder="Frank Lugayizi" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="expiry">Expiry Date</label>
+                        <input type="text" id="expiry" name="expiry" placeholder="MM/YY" maxlength="5" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount">Amount</label>
+                        <input type="text" id="amount" name="amount" placeholder="R 2000.00" readonly value="R 2000.00">
+                    </div>
+
+                    <button type="submit" class="login-btn">Pay Now</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        
+        document.getElementById('showSignupLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('signupForm').style.display = 'block';
+            document.getElementById('forgotPasswordForm').style.display = 'none';
+            document.getElementById('formTitle').textContent = 'Create Your Account';
+        });
+
+        document.getElementById('showLoginLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('signupForm').style.display = 'none';
+            document.getElementById('forgotPasswordForm').style.display = 'none';
+            document.getElementById('formTitle').textContent = 'Sign In to Your Account';
+        });
+
+        document.getElementById('showLoginLink2').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('signupForm').style.display = 'none';
+            document.getElementById('forgotPasswordForm').style.display = 'none';
+            document.getElementById('formTitle').textContent = 'Sign In to Your Account';
+        });
+
+        document.getElementById('forgotPasswordLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('signupForm').style.display = 'none';
+            document.getElementById('forgotPasswordForm').style.display = 'block';
+            document.getElementById('formTitle').textContent = 'Reset Your Password';
+        });
+
+        
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            
+            document.getElementById('email').classList.remove('error');
+            document.getElementById('password').classList.remove('error');
+            document.getElementById('emailError').style.display = 'none';
+            document.getElementById('passwordError').style.display = 'none';
+            
+            
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            let isValid = true;
+            
+            
+            if (!email) {
+                document.getElementById('email').classList.add('error');
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            }
+            
+            
+            if (!password || password.length < 6) {
+                document.getElementById('password').classList.add('error');
+                document.getElementById('passwordError').style.display = 'block';
+                isValid = false;
+            }
+            
+            
+            if (isValid) {
+                
+                console.log('Login submitted:', { email, password });
+                
+                
+                const isSuccess = Math.random() > 0.3; // 70% chance of success
+                
+                if (isSuccess) {
+                    alert('Login successful! Redirecting to your account...');
+                    
+                } else {
+                    
+                    const isNewUser = Math.random() > 0.5; // 50% chance of being a new user
+                    
+                    if (isNewUser) {
+                        
+                        document.getElementById('loginForm').style.display = 'none';
+                        document.getElementById('signupForm').style.display = 'block';
+                        document.getElementById('forgotPasswordForm').style.display = 'none';
+                        document.getElementById('formTitle').textContent = 'Create Your Account';
+                        
+                        
+                        if (email) {
+                            document.getElementById('signupEmail').value = email;
+                        }
+                        
+                        alert('It looks like you don\'t have an account yet. Please create one to continue.');
+                    } else {
+                        
+                        const errorMsg = document.createElement('div');
+                        errorMsg.className = 'error-message';
+                        errorMsg.style.display = 'block';
+                        errorMsg.style.textAlign = 'center';
+                        errorMsg.style.marginTop = '15px';
+                        errorMsg.textContent = 'Invalid email/username or password. Please try again.';
+                        
+                        const form = document.getElementById('loginForm');
+                        const existingError = form.querySelector('.error-message:not(#emailError):not(#passwordError)');
+                        if (existingError) {
+                            form.removeChild(existingError);
+                        }
+                        
+                        form.appendChild(errorMsg);
+                        
+                        
+                        document.getElementById('email').classList.add('error');
+                        document.getElementById('password').classList.add('error');
+                    }
+                }
+            }
+        });
+        
+        
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            
+            document.getElementById('signupName').classList.remove('error');
+            document.getElementById('signupEmail').classList.remove('error');
+            document.getElementById('signupPassword').classList.remove('error');
+            document.getElementById('confirmPassword').classList.remove('error');
+            document.getElementById('nameError').style.display = 'none';
+            document.getElementById('signupEmailError').style.display = 'none';
+            document.getElementById('signupPasswordError').style.display = 'none';
+            document.getElementById('confirmPasswordError').style.display = 'none';
+            
+           
+            const name = document.getElementById('signupName').value.trim();
+            const email = document.getElementById('signupEmail').value.trim();
+            const password = document.getElementById('signupPassword').value.trim();
+            const confirmPassword = document.getElementById('confirmPassword').value.trim();
+            let isValid = true;
+            
+            
+            if (!name) {
+                document.getElementById('signupName').classList.add('error');
+                document.getElementById('nameError').style.display = 'block';
+                isValid = false;
+            }
+            
+            
+            if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+                document.getElementById('signupEmail').classList.add('error');
+                document.getElementById('signupEmailError').style.display = 'block';
+                isValid = false;
+            }
+            
+            
+            if (!password || password.length < 6) {
+                document.getElementById('signupPassword').classList.add('error');
+                document.getElementById('signupPasswordError').style.display = 'block';
+                isValid = false;
+            }
+            
+            
+            if (password !== confirmPassword) {
+                document.getElementById('confirmPassword').classList.add('error');
+                document.getElementById('confirmPasswordError').style.display = 'block';
+                isValid = false;
+            }
+            
+            
+            if (isValid) {
+                console.log('Signup submitted:', { name, email, password });
+                alert('Account created successfully! You can now sign in.');
+                
+                
+                document.getElementById('loginForm').style.display = 'block';
+                document.getElementById('signupForm').style.display = 'none';
+                document.getElementById('formTitle').textContent = 'Sign In to Your Account';
+                document.getElementById('email').value = email;
+            }
+        });
+        
+        
+        document.getElementById('forgotPasswordForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            
+            document.getElementById('forgotEmail').classList.remove('error');
+            document.getElementById('forgotEmailError').style.display = 'none';
+            
+            
+            const email = document.getElementById('forgotEmail').value.trim();
+            let isValid = true;
+            
+            
+            if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+                document.getElementById('forgotEmail').classList.add('error');
+                document.getElementById('forgotEmailError').style.display = 'block';
+                isValid = false;
+            }
+            
+            
+            if (isValid) {
+                console.log('Forgot password submitted:', { email });
+                alert('Password reset instructions have been sent to your email address.');
+                
+                
+                document.getElementById('loginForm').style.display = 'block';
+                document.getElementById('forgotPasswordForm').style.display = 'none';
+                document.getElementById('formTitle').textContent = 'Sign In to Your Account';
+            }
+        });
+        
+        
+        document.getElementById('email').addEventListener('blur', function() {
+            if (!this.value.trim()) {
+                this.classList.add('error');
+                document.getElementById('emailError').style.display = 'block';
+            } else {
+                this.classList.remove('error');
+                document.getElementById('emailError').style.display = 'none';
+            }
+        });
+        
+        document.getElementById('password').addEventListener('blur', function() {
+            if (!this.value.trim() || this.value.length < 6) {
+                this.classList.add('error');
+                document.getElementById('passwordError').style.display = 'block';
+            } else {
+                this.classList.remove('error');
+                document.getElementById('passwordError').style.display = 'none';
+            }
+        });
+        
+        
+        document.getElementById('signupName').addEventListener('blur', function() {
+            if (!this.value.trim()) {
+                this.classList.add('error');
+                document.getElementById('nameError').style.display = 'block';
+            } else {
+                this.classList.remove('error');
+                document.getElementById('nameError').style.display = 'none';
+            }
+        });
+        
+        document.getElementById('signupEmail').addEventListener('blur', function() {
+            if (!this.value.trim() || !/^\S+@\S+\.\S+$/.test(this.value)) {
+                this.classList.add('error');
+                document.getElementById('signupEmailError').style.display = 'block';
+            } else {
+                this.classList.remove('error');
+                document.getElementById('signupEmailError').style.display = 'none';
+            }
+        });
+        
+        document.getElementById('signupPassword').addEventListener('blur', function() {
+            if (!this.value.trim() || this.value.length < 6) {
+                this.classList.add('error');
+                document.getElementById('signupPasswordError').style.display = 'block';
+            } else {
+                this.classList.remove('error');
+                document.getElementById('signupPasswordError').style.display = 'none';
+            }
+        });
+        
+        document.getElementById('confirmPassword').addEventListener('blur', function() {
+            const password = document.getElementById('signupPassword').value.trim();
+            if (this.value.trim() !== password) {
+                this.classList.add('error');
+                document.getElementById('confirmPasswordError').style.display = 'block';
+            } else {
+                this.classList.remove('error');
+                document.getElementById('confirmPasswordError').style.display = 'none';
+            }
+        });
+        
+        
+        document.getElementById('forgotEmail').addEventListener('blur', function() {
+            if (!this.value.trim() || !/^\S+@\S+\.\S+$/.test(this.value)) {
+                this.classList.add('error');
+                document.getElementById('forgotEmailError').style.display = 'block';
+            } else {
+                this.classList.remove('error');
+                document.getElementById('forgotEmailError').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
