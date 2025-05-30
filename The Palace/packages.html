@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Palace - Luxury Packages</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #9b59b6;
+            --accent: #e67e22;
+            --light: #ecf0f1;
+            --dark: #34495e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .packages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .package-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .package-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .package-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .package-card:hover .package-image img {
+            transform: scale(1.1);
+        }
+        
+        .package-content {
+            padding: 1.5rem;
+        }
+        
+        .package-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .package-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .package-price span {
+            font-size: 1rem;
+            font-weight: normal;
+            color: var(--dark);
+            opacity: 0.7;
+        }
+        
+        .package-features {
+            margin: 1.5rem 0;
+        }
+        
+        .package-features li {
+            list-style: none;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .package-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .package-features li i {
+            margin-right: 0.8rem;
+            color: var(--accent);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .highlight {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .package-card.special {
+            border: 2px solid var(--accent);
+            position: relative;
+        }
+        
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .currency {
+            font-size: 1rem;
+            vertical-align: super;
+            margin-right: 2px;
+        }
+        
+        @media (max-width: 768px) {
+            .packages {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">The Palace</div>
+        <div class="tagline">One step closer to paradise</div>
+    </header>
+    
+    <div class="container">
+        <div class="section-title">
+            <h2>Our Exclusive Packages</h2>
+        </div>
+        
+        <div class="packages">
+            <!-- Package 1 -->
+            <div class="package-card">
+                <div class="package-image">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Romantic Getaway">
+                </div>
+                <div class="package-content">
+                    <h3 class="package-title">Romantic Getaway</h3>
+                    <div class="package-price"><span class="currency">R</span>4,999 <span>/ night</span></div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-bed"></i> Luxury King Suite</li>
+                        <li><i class="fas fa-wine-glass-alt"></i> Champagne on Arrival</li>
+                        <li><i class="fas fa-spa"></i> Couples Spa Treatment</li>
+                        <li><i class="fas fa-utensils"></i> Candlelight Dinner</li>
+                        <li><i class="fas fa-sun"></i> Late Checkout (2PM)</li>
+                    </ul>
+                    <a href="#" class="btn">Book Now</a>
+                </div>
+            </div>
+            
+            <!-- Package 2 -->
+            <div class="package-card special">
+                <div class="highlight">Most Popular</div>
+                <div class="package-image">
+                    <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Family Vacation">
+                </div>
+                <div class="package-content">
+                    <h3 class="package-title">Family Vacation</h3>
+                    <div class="package-price"><span class="currency">R</span>6,799 <span>/ night</span></div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-home"></i> Two-Bedroom Suite</li>
+                        <li><i class="fas fa-child"></i> Kids Stay Free (Under 12)</li>
+                        <li><i class="fas fa-swimming-pool"></i> Pool Access All Day</li>
+                        <li><i class="fas fa-ice-cream"></i> Daily Breakfast Buffet</li>
+                        <li><i class="fas fa-gamepad"></i> Kids Activity Program</li>
+                    </ul>
+                    <a href="#" class="btn">Book Now</a>
+                </div>
+            </div>
+            
+            <!-- Package 3 -->
+            <div class="package-card">
+                <div class="package-image">
+                    <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Business Traveler">
+                </div>
+                <div class="package-content">
+                    <h3 class="package-title">Business Traveler</h3>
+                    <div class="package-price"><span class="currency">R</span>4,199 <span>/ night</span></div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-wifi"></i> Premium High-Speed WiFi</li>
+                        <li><i class="fas fa-desktop"></i> Executive Work Desk</li>
+                        <li><i class="fas fa-coffee"></i> All-Day Coffee/Tea</li>
+                        <li><i class="fas fa-print"></i> Printing/Fax Services</li>
+                        <li><i class="fas fa-car"></i> Airport Transfer</li>
+                    </ul>
+                    <a href="#" class="btn">Book Now</a>
+                </div>
+            </div>
+            
+            <!-- Package 4 -->
+            <div class="package-card">
+                <div class="package-image">
+                    <img src="https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Wellness Retreat">
+                </div>
+                <div class="package-content">
+                    <h3 class="package-title">Wellness Retreat</h3>
+                    <div class="package-price"><span class="currency">R</span>5,899 <span>/ night</span></div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-spa"></i> Daily Spa Treatment</li>
+                        <li><i class="fas fa-apple-alt"></i> Organic Gourmet Meals</li>
+                        <li><i class="fas fa-water"></i> Hydrotherapy Pool Access</li>
+                        <li><i class="fas fa-running"></i> Personal Training Session</li>
+                        <li><i class="fas fa-heart"></i> Health Assessment</li>
+                    </ul>
+                    <a href="#" class="btn">Book Now</a>
+                </div>
+            </div>
+            
+            <!-- Package 5 -->
+            <div class="package-card">
+                <div class="package-image">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="All-Inclusive">
+                </div>
+                <div class="package-content">
+                    <h3 class="package-title">All-Inclusive</h3>
+                    <div class="package-price"><span class="currency">R</span>8,499 <span>/ night</span></div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-utensils"></i> All Meals Included</li>
+                        <li><i class="fas fa-cocktail"></i> Unlimited Premium Drinks</li>
+                        <li><i class="fas fa-umbrella-beach"></i> Private Beach Access</li>
+                        <li><i class="fas fa-tv"></i> In-Room Entertainment</li>
+                        <li><i class="fas fa-concierge-bell"></i> 24/7 Butler Service</li>
+                    </ul>
+                    <a href="#" class="btn">Book Now</a>
+                </div>
+            </div>
+            
+            <!-- Package 6 -->
+            <div class="package-card">
+                <div class="package-image">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Weekend Escape">
+                </div>
+                <div class="package-content">
+                    <h3 class="package-title">Weekend Escape</h3>
+                    <div class="package-price"><span class="currency">R</span>4,699 <span>/ night</span></div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-calendar-week"></i> Friday to Sunday Stay</li>
+                        <li><i class="fas fa-glass-cheers"></i> Welcome Cocktail</li>
+                        <li><i class="fas fa-hiking"></i> Guided Nature Walk</li>
+                        <li><i class="fas fa-bicycle"></i> Bicycle Rental</li>
+                        <li><i class="fas fa-gift"></i> Surprise Amenity</li>
+                    </ul>
+                    <a href="#" class="btn">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2023 The Palace. All Rights Reserved.</p>
+        <p>Contact us: reservations@thepalace.com | +27 12 345 6789</p>
+    </footer>
+</body>
+</html>
