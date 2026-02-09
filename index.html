@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>The Palace</title>
+        <!-- Font(inter)-->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <!-- titel icon -->
+        <link rel="icon" type="image/png" href="">
+        <!-- stars -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div class="header-container">
+                    <a href="index.html" class="logo">THE PALaCE<span>.</span></a>
+                    <nav>
+                        <ul>
+                            <li><a href="#index.html">HOME</a></li>
+                            <li><a href="palace.html">HOTEL</a></li>
+                            <li><a href="#packages.html">PACKAGES</a></li>
+                            <li><a href="#about.html">ABOUT</a></li>
+                            <div class="auth-buttons">
+                                <a href="login.html" class="signin-btn">Sign In</a>
+                                <span class="divider">|</span>
+                                <a href="login.html" class="signup-btn">Sign Up</a>
+                            </div>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <section class = "hero">
+            <div class = "main-content">
+                <div class="image-section">
+                    <div class = "search-container">
+                        <div class = "search-bar">
+                            <div class = "form-group">
+                                <label>LOCATION</label>
+                                <div class = "select-wrapper">
+                                    <select id = "location">
+                                        <option value = "All">All</option>
+                                        <option value = "Cape-Town">Cape-Town</option>
+                                        <option value = "Durban">Durban</option>
+                                        <option value = "Johannesburg">Johannesburg</option>
+                                        <option value = "Sandton">Sandton</option>
+                                        <option value = "Polokswane">Polokswane</option>
+                                        <option value = "Pretoria">Pretoria</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class = "form-group">
+                                <label>TYPE</label> 
+                                <div class = "select-wrapper">
+                                    <select id = "type">
+                                        <option value = "Single-Room">Single Room</option>
+                                        <option value = "Double-Room">Double Room</option>
+                                        <option value = "Suites">Suites</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class = "form-group">
+                                <label>CHECK-IN DATE</label>
+                                <div class = "select-wrapper">
+                                    <input type = "date" id = "moveDate" value = "2025/04/25">
+                                </div>
+                            </div>
+                            <div class = "form-group">
+                                <label>CHECK-OUT DATE </label>
+                                <div class = "select-wrapper">
+                                    <input type = "date" id = "moveDate" value = "2025/04/25">
+                                </div>
+                            </div>
+                            <button class="search-btn" onclick="handleSearch()">
+                                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-section">
+                    <div class="text">
+                        <span>One Step Close To Paradise</span>
+                        <span>... .</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Specials -->
+        <section id="offers" class="special-offers">
+            <div class="container">
+                <h2>Special Offers</h2>
+                <div class="offers-grid">
+                    <!-- Weekend Getaway -->
+                    <div class="offer-card">
+                        <div class="offer-image" style="background-image: url('images/imag3.jpg');"></div>
+                        <div class="offer-content">
+                            <h3>Weekend Getaway</h3>
+                            <p>Book a 2-night stay and get 1 night free. Includes breakfast for two.</p>
+                            <div class="offer-meta">
+                                <span class="discount">30% OFF</span>
+                                <span class="price">From R2,499/night</span>
+                            </div>
+                            <a href="palace.html" class="book-offer">Book Offer</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Extended Stay -->
+                    <div class="offer-card">
+                        <div class="offer-image" style="background-image: url('images/imag1.jpg');"></div>
+                        <div class="offer-content">
+                            <h3>Extended Stay</h3>
+                            <p>Stay 7 nights and pay for 5. Plus Free Game Resort Access.</p>
+                            <div class="offer-meta">
+                                <span class="discount">28% OFF</span>
+                                <span class="price">From R1,999/night</span>
+                            </div>
+                            <a href="palace.html" class="book-offer">Book Offer</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Honeymoon Package -->
+                    <div class="offer-card">
+                        <div class="offer-image" style="background-image: url('images/display.jpg');"></div>
+                        <div class="offer-content">
+                            <h3>Honeymoon Package</h3>
+                            <p>Romantic package with champagne, couples massage, and sunset dinner.</p>
+                            <div class="offer-meta">
+                                <span class="discount">25% OFF</span>
+                                <span class="price">From R3,299/night</span>
+                            </div>
+                            <a href="palace.html" class="book-offer">Book Offer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Reviews -->
+        <section class = "reviews">
+            <h2> Comments </h2>
+            <div class = "reviews-container">
+                <div class = "review-card">
+                    <div class = "card-top">
+                        <div class = "profile"> 
+                            <div class = "profile-img">
+                                <img src = "icons/profile.png" />
+                            </div>
+                            <!--name-and-username-->
+                            <div class="name-user">
+                                <strong>Nokwanda Mpanza</strong>
+                                <span>@PenelopeM</span>
+                            </div>
+                        </div>
+                        <!--testimonials-->
+                        <div class = "testimonials">
+                            <i class = "fas fa-star"></i>
+                            <i class = "fas fa-star"></i>
+                            <i class = "fas fa-star"></i>
+                            <i class = "fas fa-star"></i>
+                            <i class = "far fa-star"></i>
+                        </div>
+                    </div>
+                    <!--comments---------------------------------------------------->
+                    <div class = "client-comment">
+                        <p>It is easy to navigate around the system and the prices are affordable . They have great services, thank you for being the best hosts . I had the best time of my life</p>
+                    </div>
+                </div>
+                <div class = "review-card">
+                    <div class = "card-top">
+                        <div class = "profile">
+                            <div class = "profile-img">
+                                <img src = "icons/profile.png" />
+                            </div>
+                            <!--name-and-username-->
+                            <div class = "name-user">
+                                <strong>Otshepeng Ramokgadi</strong>
+                                <span>@tshepiR</span>
+                            </div>
+                        </div>
+                        <!--testimonials-->
+                        <div class = "testimonials">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    <!--comments---------------------------------------------------->
+                    <div class="client-comment">
+                        <p>The hotel is amazing but had an altercation with one of the staffs who was rude to my family</p>
+                    </div>
+                </div>
+                <div class = "review-card">
+                    <div class = "card-top">
+                        <div class = "profile">
+                            <div class = "profile-img">
+                                <img src = "icons/profile.png" />
+                            </div>
+                            <!--name-and-username-->
+                            <div class = "name-user">
+                                <strong>Kebarileng Makgobe</strong>
+                                <span>@Kebzaweb</span>
+                            </div>
+                        </div>
+                        <!--testimonials-->
+                        <div class = "testimonials">
+                            <i class = "fas fa-star"></i>
+                            <i class = "fas fa-star"></i>
+                            <i class = "fas fa-star"></i>
+                            <i class = "fas fa-star"></i>
+                            <i class = "far fa-star"></i>
+                        </div>
+                    </div>
+                    <!--comments---------------------------------------------------->
+                    <div class = "client-comment">
+                        <p>Had an absolute amazing staycation in the palace hotel</p>
+                    </div>
+                </div>
+                <div class = "review-card">
+                    <div class = "card-top">
+                        <div class =" profile"> 
+                            <div class = "profile-img">
+                                <img src = "icons/profile.png" />
+                            </div>
+                            <!--name-and-username-->
+                            <div class = "name-user">
+                                <strong>Regina Mogorosi</strong>
+                                <span>@Regina</span>
+                            </div>
+                        </div>
+                        <!--testimonials-->
+                        <div class = "testimonials">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <!--comments---------------------------------------------------->
+                    <div class = "client-comment">
+                        <p>The staff are so friendly , the service is excellent.Can't wait to come back during my vacation in December</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="partners-section">
+            <div class="container">
+                <h2>In Partnership With</h2>
+                <div class="logo-carousel">
+                    <div class="logo-track">
+                        <!-- Section -->
+                        <div class="logo-item">
+                            <img src="./partners/imag (6).png" alt="Partner 1">
+                        </div>
+                        <div class="logo-item">
+                            <img src="./partners/imag (7).png" alt="Partner 2">
+                        </div>
+                        <div class="logo-item">
+                            <img src="./partners/imag (8).png" alt="Partner 3">
+                        </div>
+                        <div class="logo-item">
+                            <img src="./partners/imag (9).png" alt="Partner 4">
+                        </div>
+                        <div class="logo-item">
+                            <img src="./partners/imag (10).png" alt="Partner 5">
+                        </div>
+                        
+                        <!-- Section -->
+                        <div class="logo-item">
+                            <img src="./partners/imag (1).png" alt="Partner 1">
+                        </div>
+                        <div class="logo-item">
+                            <img src="./partners/imag (2).png" alt="Partner 2">
+                        </div>
+                        <div class="logo-item">
+                            <img src="./partners/imag (3).png" alt="Partner 3">
+                        </div>
+                        <div class="logo-item">
+                            <img src="./partners/imag (4).png" alt="Partner 4">
+                        </div>
+                        <div class="logo-item">
+                            <img src="./partners/imag (5).png" alt="Partner 5">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div id="signupPromptModal" class="modal" style="display:none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
+            <div class="modal-content" style="background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 10px; text-align: center; position: relative;">
+                <span class="close-modal" style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; position: absolute; top: 10px; right: 20px;">&times;</span>
+                <h2>Become a Member!</h2>
+                <p>Did you know members get exclusive discounts? Sign up today to unlock special offers and enhance your experience with The Palace.</p>
+                <a href="login.html#signup" class="signup-btn-modal" style="background-color: #98B3F9; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 15px;">Sign Up Now</a>
+                <button type="button" class="dismiss-modal-btn" style="background-color: #ddd; color: #333; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 15px; margin-left: 10px; border: none; cursor: pointer;">Maybe Later</button>
+            </div>
+        </div>
+    </body>
+    <footer>
+        <div class = "footer-container">
+            <div class = "footer-brand">
+                <a href = "#" class = "footer-logo">The Palace<span>.</span></a>
+                <p class = "footer-about">
+                    Redefining luxury hospitality with exceptional service and unforgettable experiences at our premier locations worldwide. 
+                    Since 1985, we've been committed to excellence in every detail.
+                </p>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="footer-heading">Navigation</h3>
+                <ul class="footer-links">
+                    <li><a href="#index.html">Home</a></li>
+                    <li><a href="#suites">Suites</a></li>
+                    <li><a href="#offers">Special Offers</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="footer-heading">Contact Us</h3>
+                <div class="contact-info">
+                    <p>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>The Palace Headquarters<br>
+                        123 Luxury Avenue<br>
+                        Mafikeng, 2745<br>
+                        South Africa</span>
+                    </p>
+                    <p>
+                        <i class="fas fa-phone"></i>
+                        <span>+27 11 272 4567 (Reservations)<br>
+                        +27 82 123 4567 (Emergency)</span>
+                    </p>
+                    <p>
+                        <i class="fas fa-envelope"></i>
+                        <span>reservations@palace.com<br>
+                        info@palace.com<br>
+                        concierge@palace.com</span>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="footer-heading">Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+                
+                <h3 class="footer-heading" style="margin-top: 30px;">Newsletter</h3>
+                <form class="newsletter-form">
+                    <input type="text" placeholder="Your Name">
+                    <input type="email" placeholder="Your Email Address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="copyright">&copy; 2025 The Palace Hotels & Resorts. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Cookie Policy</a> | <a href="#">Accessibility</a></p>
+            <p style="margin-top: 10px;">The Palace is a registered trademark of Palace Hospitality Group (Pty) Ltd</p>
+        </div>
+    </footer>
+    <script type="module" src="./src/main.js"></script>
+</html>

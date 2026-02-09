@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking - The Palace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <div class="logo-item"><a href="index.html" class="logo">THE PALaCE<span>.</span></a></div>
+        <nav>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="palace.html">HOTEL</a></li>
+                <li><a href="packages.html">PACKAGES</a></li> 
+                <li><a href="about.html">ABOUT</a></li> 
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="login.html" class="signin-btn">LOGIN</a>
+            <span class="divider">|</span>
+            <a href="login.html" class="signup-btn">SIGN-UP</a>
+        </div>
+        
+    </header>
+    
+    <div class="search-bar-container">
+        <div class="search-bar">
+            <select name="location" id="search-location">
+                <option value="" disabled selected>LOCATION</option>
+                <option value="all">All</option>
+                <option value="Johannesburg">Johannesburg</option>
+                <option value="Cape-Town">Cape Town</option>
+                <option value="Durban">Durban</option>
+                <option value="Elizabeth">Elizabeth</option> <option value="Potchefstroom">Potchefstroom</option>
+                <option value="Pretoria">Pretoria</option>
+                <option value="Sandton">Sandton</option>
+                <option value="Polokwane">Polokwane</option>
+            </select>
+            <select name="room-type" id="search-room-type">
+                <option value="" disabled selected>ROOM TYPE</option>
+                <option value="all">All Types</option>
+                <option value="Single Room">Single Room</option>
+                <option value="Double Room">Double Room</option>
+                <option value="Suites">Suites</option>
+            </select>
+            <input type="date" name="check-in-date" id="search-check-in" placeholder="Check-in Date">
+            <input type="date" name="check-out-date" id="search-check-out" placeholder="Check-out Date">
+            <button onclick="filterRoomTypes()">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                </svg>
+                Search
+            </button>
+        </div>
+    </div>
+
+    <section class="palace-hotel-listings-section">
+        <div class="container">
+            <h2>Our Hotel Rooms</h2>
+            <div id="room-types-container-grid" class="offers-grid">
+                <p id="loading-message" style="text-align:center; grid-column: 1 / -1;">Loading hotel rooms...</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="special-offers">
+            <h2 class="section-title">Special Offers</h2>
+            <div class="offers-grid">
+                <div class="offer-card">
+                    <div class="offer-image" style="background-image: url('https://placehold.co/600x400/98B3F9/FFFFFF?text=Offer+1');" onerror="this.style.backgroundImage='url(https://placehold.co/600x400/E0E0E0/B0B0B0?text=Image+Error)'"></div>
+                    <div class="offer-details">
+                        <h3 class="offer-title">Weekend Getaway</h3>
+                        <p class="offer-description">Book 2 nights and get 1 night free. Valid for weekend stays only.</p>
+                         <a href="#" class="dynamic-book-offer">View Offer</a>
+                    </div>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-image" style="background-image: url('https://placehold.co/600x400/98B3F9/FFFFFF?text=Offer+2');" onerror="this.style.backgroundImage='url(https://placehold.co/600x400/E0E0E0/B0B0B0?text=Image+Error)'"></div>
+                    <div class="offer-details">
+                        <h3 class="offer-title">Early Bird Special</h3>
+                        <p class="offer-description">Book 30 days in advance and get 20% off your stay.</p>
+                        <a href="#" class="dynamic-book-offer">View Offer</a>
+                    </div>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-image" style="background-image: url('https://placehold.co/600x400/98B3F9/FFFFFF?text=Offer+3');" onerror="this.style.backgroundImage='url(https://placehold.co/600x400/E0E0E0/B0B0B0?text=Image+Error)'"></div>
+                    <div class="offer-details">
+                        <h3 class="offer-title">Family Package</h3>
+                        <p class="offer-description">Kids stay free and get complimentary breakfast for the whole family.</p>
+                        <a href="#" class="dynamic-book-offer">View Offer</a>
+                    </div>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-image" style="background-image: url('https://placehold.co/600x400/98B3F9/FFFFFF?text=Offer+4');" onerror="this.style.backgroundImage='url(https://placehold.co/600x400/E0E0E0/B0B0B0?text=Image+Error)'"></div>
+                    <div class="offer-details">
+                        <h3 class="offer-title">Honeymoon Suite</h3>
+                        <p class="offer-description">Special romantic package with champagne and couples massage.</p>
+                        <a href="#" class="dynamic-book-offer">View Offer</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="roomDetailModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-btn" onclick="closeRoomModal()">&times;</button>
+            
+            <div class="modal-header">
+                <div class="modal-image-container">
+                    <img id="modalRoomImage" src="https://placehold.co/600x400/E0E0E0/B0B0B0?text=Room+Image" alt="Room Image" class="modal-room-image">
+                </div>
+                <div class="modal-info">
+                    <h2 id="modalHotelName">Hotel Name</h2>
+                    <span id="modalRoomType" class="room-type-subtitle-modal">Room Type</span>
+                    <p id="modalRoomPrice" class="modal-price">R0/night</p>
+                    <p class="modal-detail-item"><i class="fas fa-map-marker-alt"></i> <span id="modalHotelAddress">Hotel Address</span></p>
+                    <p class="modal-detail-item"><i class="fas fa-users"></i> Capacity: <span id="modalRoomCapacity">0</span></p>
+                    <p class="modal-detail-item"><i class="fas fa-star"></i> Rating: <span id="modalHotelRating">N/A</span> (<span id="modalHotelReviews">0</span> reviews)</p>
+                    <p class="modal-detail-item"><i class="fas fa-road"></i> Distance: <span id="modalHotelDistance">N/A</span></p>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>Room Description</h3>
+                <p id="modalRoomDescription">Full description of the room...</p>
+            </div>
+            
+            <div class="modal-section">
+                <h3>Hotel Description</h3>
+                <p id="modalHotelOverallDescription">Overall description of the hotel...</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Amenities</h3>
+                <ul id="modalAmenitiesList" class="amenities-list">
+                    </ul>
+            </div>
+
+            <div class="modal-section reviews-section">
+                <h3>Guest Reviews</h3>
+                <div id="modalReviewsContainer">
+                    </div>
+            </div>
+
+            <button class="modal-payment-btn" href="payment.html">Proceed to Payment</button>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section footer-brand">
+                <a href="index.html" class="logo">The Palace<span>.</span></a>
+                <p class="footer-about">
+                    Redefining luxury hospitality with exceptional service and unforgettable experiences at our premier locations worldwide. 
+                    Since 1985, we've been committed to excellence in every detail.
+                </p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="palace.html">Hotel</a></li>
+                    <li><a href="#packages">Packages</a></li>
+                    <li><a href="#offers">Special Offers</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-info">
+                    <p>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>The Palace Headquarters<br>
+                        123 Luxury Avenue<br>
+                        Mahikeng, 2745, South Africa</span>
+                    </p>
+                    <p>
+                        <i class="fas fa-phone"></i>
+                        <span>+27 11 272 4567 (Reservations)<br>
+                        +27 82 123 4567 (Support)</span>
+                    </p>
+                    <p>
+                        <i class="fas fa-envelope"></i>
+                        <span>reservations@thepalace.com<br>
+                        info@thepalace.com</span>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 The Palace Hotels & Resorts. All Rights Reserved.</p>
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            <p style="margin-top: 10px;">The Palace is a registered trademark of Palace Hospitality Group (Pty) Ltd</p>
+        </div>
+    </footer>
+    <script type="module" src="./src/palace.js"></script>
+</html>

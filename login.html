@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Palace | User Access</title>
+    <!-- titel icon -->
+    <link rel="icon" type="image/png" href="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/login.css">
+</head>
+<body>
+    <section id="login" class="login-section">
+        <div class="login-container">
+            <h2 class="login-title" id="formTitle">Sign In</h2>
+            
+            <div id="generalFormMessage" class="form-message"></div>
+
+            <form id="loginForm" novalidate>
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" name="email" placeholder="you@example.com" required>
+                    <div class="error-message" id="loginEmailError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required>
+                    <div class="error-message" id="loginPasswordError"></div>
+                </div>
+                
+                <div class="forgot-password">
+                    <a href="#" id="forgotPasswordLink">Forgot Password?</a>
+                </div>
+                
+                <button type="submit" class="action-btn">Sign In</button>
+                
+                <div class="form-switch-link">
+                    Don't have an account? <a href="#" id="showSignupLink">Register here</a>
+                </div>
+            </form>
+            
+            <form id="signupForm" novalidate>
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" name="name" placeholder="Your Full Name" required>
+                    <div class="error-message" id="signupNameError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" name="email" placeholder="you@example.com" required>
+                    <div class="error-message" id="signupEmailError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" name="password" placeholder="Create a password (min. 6 characters)" required>
+                    <div class="error-message" id="signupPasswordError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                    <div class="error-message" id="confirmPasswordError"></div>
+                </div>
+                
+                <button type="submit" class="action-btn">Create Account</button>
+                
+                <div class="form-switch-link">
+                    Already have an account? <a href="#" id="showLoginLinkFromSignup">Sign in here</a>
+                </div>
+            </form>
+            
+            <form id="forgotPasswordForm" novalidate>
+                <div class="form-group">
+                    <label for="forgotEmail">Email Address</label>
+                    <input type="email" id="forgotEmail" name="email" placeholder="Enter your registered email" required>
+                    <div class="error-message" id="forgotEmailError"></div>
+                </div>
+                
+                <button type="submit" class="action-btn">Send Reset Link</button>
+                
+                <div class="form-switch-link">
+                    Remember your password? <a href="#" id="showLoginLinkFromForgot">Sign in here</a>
+                </div>
+            </form>
+        </div>
+    </section>
+    <script type="module" scr="./src/login.js"></script>
+</html>
