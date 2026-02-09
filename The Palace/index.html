@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>The Palace</title>
+        <!-- Font(inter)-->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <!-- titel icon -->
+        <link rel="icon" type="image/png" href="">
+        <!-- stars -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <style>
+            body {
+                font-family: 'Inter', sans-serif;
+                background-color: #F0F8FF;
+                margin: 0;
+                padding: 0;
+                color: #000000; 
+            }
+
+            /* Header */
+            header {
+                background-color: white;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                position: sticky;
+                top: 0;
+                z-index: 100;
+            }
+            
+            .header-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 15px 20px;
+                height: 60px;
+            }
+            
+            .logo {
+                font-size: 26px;
+                font-weight: 700;
+                color: #000000; 
+            }
+            
+            .logo span {
+                color: #98B3F9;
+            }
+            
+            nav ul {
+                display: flex;
+                list-style: none;
+                gap: 25px;
+                margin: 0;
+                padding: 0;
+                align-items: center;
+            }
+            
+            nav ul li a {
+                font-weight: 900;
+                transition: color 0.3s;
+                color: #000000;
+                font-size: 14px;
+
+            }
+            
+            nav ul li a:hover {
+                color: #98B3F9;
+            }  
+
+            /* Signin/Signup Buttons */
+            .auth-buttons {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-left: 15px;
+            }
+
+            .signin-btn, .signup-btn {
+                padding: 6px 15px;
+                border-radius: 4px;
+                font-weight: 900;
+                font-size: 13px;
+                transition: all 0.3s ease;
+            }
+
+            .signin-btn {
+                color: #333;
+                background: transparent;
+                border: 1px solid #ddd;
+            }
+
+            .signin-btn:hover {
+                background: #f5f5f5;
+                border-color: #ccc;
+            }
+
+            .signup-btn {
+                background-color: #98B3F9;
+                color: white;
+                border: 1px solid #98B3F9;
+            }
+
+            .signup-btn:hover {
+                background-color: #7a9cf7;
+                border-color: #7a9cf7;
+            }
+
+            .divider {
+                color: #ddd;
+                font-weight: 300;
+                font-size: 14px;
+            }
+
+            /* Body content */
+            .main-content {
+                display: flex;
+                height: 90vh;
+                margin-top: 0;
+            }
+
+            .image-section {
+                width: 50%;
+                height: 100%;
+                background: #ddd url('images/imag2.jpg') no-repeat center center;
+                background-size: cover;
+                margin-left: 0px;
+                position: relative;
+            }
+
+            .search-container {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                width: 90vw;
+                transform: translateY(-50%);
+                padding: 0 40px;
+            }
+
+            .search-bar {
+                max-width: 1200px;
+                margin: 0 auto;
+                background-color: white;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px #ffffff;
+                border: 1px solid #98B3F9;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                align-items: flex-end;
+            }
+
+            .form-group {
+                padding: 12px 15px;
+                border: 1px solid #98B3F9;
+                border-radius: 4px;
+                flex: 1;
+                min-width: 150px;
+                font-family: 'Inter', sans-serif;
+            }
+
+            .form-group label {
+                display: block;
+                font-size: 14px;
+                font-weight: 500;
+                color: #98B3F9;
+                margin-bottom: 5px;
+            }
+
+            .select-wrapper {
+                position: relative;
+            }
+
+            select, input[type="date"] {
+                width: 100%;
+                padding: 8px 12px;
+                border: 1px solid #98B3F9;
+                border-radius: 4px;
+                appearance: none;
+                background-color: #ffffff;
+                font-size: 14px;
+            }
+
+            select:focus, input:focus {
+                outline: none;
+                border-color: #98B3F9;;
+            }
+
+            .select-wrapper::after {
+                content: "▼";
+                font-size: 12px;
+                color: #98B3F9;;
+                position: absolute;
+                right: 12px;
+                top: 50%;
+                transform: translateY(-50%);
+                pointer-events: none;
+            }
+
+            .search-btn {
+                background: #98B3F9;
+                color: white;
+                border: none;
+                padding: 10px;
+                border-radius: 4px;
+                cursor: pointer;
+                height: 42px;
+                width: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .search-btn:hover {
+                background: white;
+                color: #98B3F9;
+                border: #98B3F9;
+            }
+
+            /* text section */
+            .text-section {
+                width: 40%;
+                padding: 80px 40px;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .text {
+                font-size: 42px;
+                font-weight: bold;
+                line-height: 1.2;
+                margin-bottom: 60px;
+            }
+            
+            .text span:first-child {
+                font-size: 50px;
+            }
+
+            .text span:last-child {
+                font-size: 50px;
+                color: #98B3F9;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            /*Specials*/
+            .special-offers {
+                padding: 80px 0;
+                background-color: white;
+            }
+
+            .offers-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 30px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .offer-card {
+                background-color: #fff;
+                border-radius: 20px;
+                overflow: hidden;
+                box-shadow: 0 4px 12px #98B3F9;
+                transition: transform 0.3s;
+            }
+
+            .offer-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+            }
+
+            .offer-image {
+                height: 200px;
+                background-size: cover;
+                background-position: center;
+            }
+
+            .offer-content {
+                padding: 20px;
+            }
+
+            .offer-content h3 {
+                font-size: 22px;
+                margin-bottom: 10px;
+                color: #000;
+            }
+
+            .offer-content p {
+                margin-bottom: 15px;
+                color: #555;
+                font-size: 15px;
+                line-height: 1.5;
+            }
+
+            .offer-meta {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 15px;
+            }
+
+            .discount {
+                background-color: #98B3F9;
+                color: white;
+                padding: 5px 10px;
+                border-radius: 4px;
+                font-weight: 600;
+                font-size: 14px;
+            }
+
+            .price {
+                font-weight: 600;
+                color: #333;
+            }
+
+            .book-offer {
+                display: block;
+                text-align: center;
+                background-color: #333;
+                color: white;
+                padding: 12px;
+                border-radius: 4px;
+                font-weight: 500;
+                transition: background-color 0.3s;
+            }
+
+            .book-offer:hover {
+                background-color: #98B3F9;
+                color: white;
+            }
+
+            h2 {
+                text-align: center;
+                font-size: 36px;
+                margin-bottom: 50px;
+                font-weight: 600;
+                color: #000000; 
+            }
+
+            /*Reviews */
+            .reviews {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .reviews-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                flex-wrap: wrap;
+            }
+
+            .review-card {
+                border-radius: 8px;
+                width: 500px;
+                min-height: 210px;
+                box-shadow: 2px 2px 30px rgba(0,0,0,0.1);
+                background-color: #ffffff;
+                padding: 25px;
+                margin: 10px;
+                display: flex;
+                flex-direction: column;
+                cursor: pointer;
+            }
+
+            .card-top {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 20px;
+            }
+
+            .profile {
+                display: flex;
+                align-items: center;
+            }
+
+            .profile-img {
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                overflow: hidden;
+                margin-right: 15px;
+            }
+
+            .profile-img img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+
+            .name-user {
+                display: flex;
+                flex-direction: column;
+            }
+            .name-user strong{
+                color: #3d3d3d;
+                font-size: 1.1em;
+                letter-spacing: 0.5px;
+            }
+            .name-user span{
+                color: #979797;
+                font-size: 0.8rem;
+            }
+
+            .testimonials {
+                color: rgb(0, 0, 0);
+            }
+
+            .client-comment p{
+                font-size: 0.9rem;
+                color: #4b4b4b;
+            }
+
+            .card-box:hover {
+                color:#98B3F9
+                
+            }
+
+            ::selection {
+                color: #ffffff;
+                background-color: #252525;
+            }
+
+            /* Partnership */
+            .partners-section {
+                padding: 60px 0;
+                background-color: #f9f9f9;
+                overflow: hidden;
+            }
+
+            .partners-section h2 {
+                text-align: center;
+                margin-bottom: 40px;
+                font-size: 28px;
+                color: #333;
+            }
+
+            .logo-carousel {
+                width: 100%;
+                overflow: hidden;
+                position: relative;
+            }
+
+            .logo-track {
+                display: flex;
+                align-items: center;
+                animation: scroll 20s linear infinite;
+                width: calc(250px * 10);
+            }
+
+            .logo-item {
+                flex: 0 0 200px;
+                padding: 0 25px;
+                display: flex;
+                justify-content: center;
+            }
+
+            .logo-item img {
+                max-width: 100%;
+                height: auto;
+                max-height: 80px;
+                object-fit: contain;
+                filter: grayscale(100%);
+                opacity: 0.7;
+                transition: all 0.3s ease;
+            }
+
+            .logo-item img:hover {
+                filter: grayscale(0%);
+                opacity: 1;
+            }
+
+            @keyframes scroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+            }
+
+
+            /* Footer */
+            footer {
+                background: #98B3F9;
+                color: #000000;
+                padding: 50px 0 20px;
+                font-family: 'Inter', sans-serif;
+            }
+
+            .footer-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            .footer-section {
+                flex: 1;
+                min-width: 250px;
+                margin-bottom: 30px;
+                padding: 0 15px;
+            }
+
+            .footer-section h3 {
+                color: #000000; 
+                margin-bottom: 20px;
+                font-size: 18px;
+                font-weight: 600;
+            }
+
+            .footer-section p {
+                margin: 10px 0;
+                line-height: 1.6;
+                font-weight: 300;
+                color: #000000;
+            }
+
+            .footer-section ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .footer-section ul li {
+                margin-bottom: 10px;
+            }
+
+            .footer-section ul li a {
+                color: #000000; 
+                text-decoration: none;
+                transition: color 0.3s;
+                font-weight: 300;
+            }
+
+            .footer-section ul li a:hover {
+                color: #ffffff;
+            }
+
+            .social-links {
+                display: flex;
+                gap: 15px;
+                margin-top: 20px;
+            }
+
+            .social-links a {
+                color: #000000; 
+                font-size: 20px;
+                transition: color 0.3s;
+            }
+
+            .social-links a:hover {
+                color: #ffffff; 
+            }
+
+            .copyright {
+                text-align: center;
+                padding-top: 20px;
+                border-top: 1px solid rgba(0,0,0,0.2);
+                margin-top: 30px;
+                font-size: 14px;
+                color: #000000; 
+                font-weight: 300;
+            }
+
+            .contact-info {
+                margin-top: 20px;
+            }
+
+            .contact-info p {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+                font-weight: 300;
+                color: #000000; 
+            }
+
+            .contact-info i {
+                margin-right: 10px;
+                color: #000000; 
+                width: 20px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div class="header-container">
+                    <a href="index.html" class="logo">THE PALaCE<span>.</span></a>
+                    <nav>
+                        <ul>
+                            <li><a href="#index.html">HOME</a></li>
+                            <li><a href="palace.html">HOTEL</a></li>
+                            <li><a href="#packages.html">PACKAGES</a></li>
+                            <li><a href="#about.html">ABOUT</a></li>
+                            <div class="auth-buttons">
+                                <a href="login.html" class="signin-btn">Sign In</a>
+                                <span class="divider">|</span>
+                                <a href="login.html" class="signup-btn">Sign Up</a>
+                            </div>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <section class = "hero">
+            <div class = "main-content">
+                <div class="image-section">
+                    <div class = "search-container">
+                        <div class = "search-bar">
+                            <div class = "form-group">
+                                <label>LOCATION</label>
+                                <div class = "select-wrapper">
+                                    <select id = "location">
+                                        <option value = "All">All</option>
+                                        <option value = "Cape-Town">Cape-Town</option>
+                                        <option value = "Durban">Durban</option>
+                                        <option value = "Johannesburg">Johannesburg</option>
+                                        <option value = "Sandton">Sandton</option>
+                                        <option value = "Polokswane">Polokswane</option>
+                                        <option value = "Pretoria">Pretoria</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class = "form-group">
+                                <label>TYPE</label> 
+                                <div class = "select-wrapper">
+                                    <select id = "type">
+                                        <option value = "Single-Room">Single Room</option>
+                                        <option value = "Double-Room">Double Room</option>
+                                        <option value = "Suites">Suites</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class = "form-group">
+                                <label>CHECK-IN DATE</label>
+                                <div class = "select-wrapper">
+                                    <input type = "date" id = "moveDate" value = "2025/04/25">
+                                </div>
+                            </div>
+                            <div class = "form-group">
+                                <label>CHECK-OUT DATE </label>
+                                <div class = "select-wrapper">
+                                    <input type = "date" id = "moveDate" value = "2025/04/25">
+                                </div>
+                            </div>
+                            <button class="search-btn" onclick="handleSearch()">
+                                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-section">
+                    <div class="text">
+                        <span>One Step Close To Paradise</span>
+                        <span>... .</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Specials -->
+        <section id="offers" class="special-offers">
+            <div class="container">
+                <h2>Special Offers</h2>
+                <div class="offers-grid">
+                    <!-- Weekend Getaway -->
+                    <div class="offer-card">
+                        <div class="offer-image" style="background-image: url('images/imag3.jpg');"></div>
+                        <div class="offer-content">
+                            <h3>Weekend Getaway</h3>
+                            <p>Book a 2-night stay and get 1 night free. Includes breakfast for two.</p>
+                            <div class="offer-meta">
+                                <span class="discount">30% OFF</span>
+                                <span class="price">From R2,499/night</span>
+                            </div>
+                            <a href="palace.html" class="book-offer">Book Offer</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Extended Stay -->
+                    <div class="offer-card">
+                        <div class="offer-image" style="background-image: url('images/imag1.jpg');"></div>
+                        <div class="offer-content">
+                            <h3>Extended Stay</h3>
+                            <p>Stay 7 nights and pay for 5. Plus Free Game Resort Access.</p>
+                            <div class="offer-meta">
+                                <span class="discount">28% OFF</span>
+                                <span class="price">From R1,999/night</span>
+                            </div>
+                            <a href="palace.html" class="book-offer">Book Offer</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Honeymoon Package -->
+                    <div class="offer-card">
+                        <div class="offer-image" style="background-image: url('images/display.jpg');"></div>
+                        <div class="offer-content">
+                            <h3>Honeymoon Package</h3>
+                            <p>Romantic package with champagne, couples massage, and sunset dinner.</p>
+                            <div class="offer-meta">
+                                <span class="discount">25% OFF</span>
+                                <span class="price">From R3,299/night</span>
+                            </div>
+                            <a href="palace.html" class="book-offer">Book Offer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Reviews -->
+        <section class = "reviews">
+            <h2> Comments </h2>
+            <div class = "reviews-container">
+                <div class = "review-card">
+                    <div class = "card-top">
+                        <div class = "profile"> 
+                            <div class = "profile-img">
+                                <img src = "icons/profile.png" />
+                            </div>
+                            <!--name-and-username-->
+                            <div class="name-user">
+                                <strong>Nokwanda Mpanza</strong>
+                                <span>@PenelopeM</span>
+                            </div>
+                        </div>
+                        <!--testimonials-->
+                        <div class = "testimonials">
+                            <i class = "fas fa-star"></i>
+                            <i class = "fas fa-star"></i>
+                            <i class = "fas fa-star"></i>
+                            <i class = "fas fa-star"></i>
+                            <i class = "far fa-star"></i>
+                        </div>
+                    </div>
+                    <!--comments---------------------------------------------------->
+                    <div class = "client-comment">
+                        <p>It is easy to navigate around the system and the prices are affordable . They have great services, thank you for being the best hosts . I had the best time of my life</p>
+                    </div>
+                </div>
+                <div class = "review-card">
+                    <div class = "card-top">
+                        <div class = "profile">
+                            <div class = "profile-img">
+                                <img src = "icons/profile.png" />
+                            </div>
+                            <!--name-and-username-->
+                            <div class = "name-user">
+                                <strong>Otshepeng Ramokgadi</strong>
+                                <span>@tshepiR</span>
+                            </div>
+                        </div>
+                        <!--testimonials-->
+                        <div class = "testimonials">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    <!--comments---------------------------------------------------->
+                    <div class="client-comment">
+                        <p>The hotel is amazing but had an altercation with one of the staffs who was rude to my family</p>
+                    </div>
+                </div>
+                <div class = "review-card">
+                    <div class = "card-top">
+                        <div class = "profile">
+                            <div class = "profile-img">
+                                <img src = "icons/profile.png" />
+                            </div>
+                            <!--name-and-username-->
+                            <div class = "name-user">
+                                <strong>Kebarileng Makgobe</strong>
+                                <span>@Kebzaweb</span>
+                            </div>
+                        </div>
+                        <!--testimonials-->
+                        <div class = "testimonials">
+                            <i class = "fas fa-star"></i>
+                            <i class = "fas fa-star"></i>
+                            <i class = "fas fa-star"></i>
+                            <i class = "fas fa-star"></i>
+                            <i class = "far fa-star"></i>
+                        </div>
+                    </div>
+                    <!--comments---------------------------------------------------->
+                    <div class = "client-comment">
+                        <p>Had an absolute amazing staycation in the palace hotel</p>
+                    </div>
+                </div>
+                <div class = "review-card">
+                    <div class = "card-top">
+                        <div class =" profile"> 
+                            <div class = "profile-img">
+                                <img src = "icons/profile.png" />
+                            </div>
+                            <!--name-and-username-->
+                            <div class = "name-user">
+                                <strong>Regina Mogorosi</strong>
+                                <span>@Regina</span>
+                            </div>
+                        </div>
+                        <!--testimonials-->
+                        <div class = "testimonials">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <!--comments---------------------------------------------------->
+                    <div class = "client-comment">
+                        <p>The staff are so friendly , the service is excellent.Can't wait to come back during my vacation in December</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="partners-section">
+            <div class="container">
+                <h2>In Partnership With</h2>
+                <div class="logo-carousel">
+                    <div class="logo-track">
+                        <!-- Section -->
+                        <div class="logo-item">
+                            <img src="partners/imag (6).png" alt="Partner 1">
+                        </div>
+                        <div class="logo-item">
+                            <img src="partners/imag (7).png" alt="Partner 2">
+                        </div>
+                        <div class="logo-item">
+                            <img src="partners/imag (8).png" alt="Partner 3">
+                        </div>
+                        <div class="logo-item">
+                            <img src="partners/imag (9).png" alt="Partner 4">
+                        </div>
+                        <div class="logo-item">
+                            <img src="partners/imag (10).png" alt="Partner 5">
+                        </div>
+                        
+                        <!-- Section -->
+                        <div class="logo-item">
+                            <img src="partners/imag (1).png" alt="Partner 1">
+                        </div>
+                        <div class="logo-item">
+                            <img src="partners/imag (2).png" alt="Partner 2">
+                        </div>
+                        <div class="logo-item">
+                            <img src="partners/imag (3).png" alt="Partner 3">
+                        </div>
+                        <div class="logo-item">
+                            <img src="partners/imag (4).png" alt="Partner 4">
+                        </div>
+                        <div class="logo-item">
+                            <img src="partners/imag (5).png" alt="Partner 5">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div id="signupPromptModal" class="modal" style="display:none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
+            <div class="modal-content" style="background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 10px; text-align: center; position: relative;">
+                <span class="close-modal" style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; position: absolute; top: 10px; right: 20px;">&times;</span>
+                <h2>Become a Member!</h2>
+                <p>Did you know members get exclusive discounts? Sign up today to unlock special offers and enhance your experience with The Palace.</p>
+                <a href="login.html#signup" class="signup-btn-modal" style="background-color: #98B3F9; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 15px;">Sign Up Now</a>
+                <button type="button" class="dismiss-modal-btn" style="background-color: #ddd; color: #333; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 15px; margin-left: 10px; border: none; cursor: pointer;">Maybe Later</button>
+            </div>
+        </div>
+    </body>
+    <footer>
+        <div class = "footer-container">
+            <div class = "footer-brand">
+                <a href = "#" class = "footer-logo">The Palace<span>.</span></a>
+                <p class = "footer-about">
+                    Redefining luxury hospitality with exceptional service and unforgettable experiences at our premier locations worldwide. 
+                    Since 1985, we've been committed to excellence in every detail.
+                </p>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="footer-heading">Navigation</h3>
+                <ul class="footer-links">
+                    <li><a href="#index.html">Home</a></li>
+                    <li><a href="#suites">Suites</a></li>
+                    <li><a href="#offers">Special Offers</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="footer-heading">Contact Us</h3>
+                <div class="contact-info">
+                    <p>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>The Palace Headquarters<br>
+                        123 Luxury Avenue<br>
+                        Mafikeng, 2745<br>
+                        South Africa</span>
+                    </p>
+                    <p>
+                        <i class="fas fa-phone"></i>
+                        <span>+27 11 272 4567 (Reservations)<br>
+                        +27 82 123 4567 (Emergency)</span>
+                    </p>
+                    <p>
+                        <i class="fas fa-envelope"></i>
+                        <span>reservations@palace.com<br>
+                        info@palace.com<br>
+                        concierge@palace.com</span>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="footer-heading">Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+                
+                <h3 class="footer-heading" style="margin-top: 30px;">Newsletter</h3>
+                <form class="newsletter-form">
+                    <input type="text" placeholder="Your Name">
+                    <input type="email" placeholder="Your Email Address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="copyright">&copy; 2025 The Palace Hotels & Resorts. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Cookie Policy</a> | <a href="#">Accessibility</a></p>
+            <p style="margin-top: 10px;">The Palace is a registered trademark of Palace Hospitality Group (Pty) Ltd</p>
+        </div>
+    </footer>
+    <script>
+        function handleSearch() {
+            const location = document.getElementById('location').value;
+            const type = document.getElementById('type').value; 
+            const checkIn = document.querySelectorAll('input[type="date"]')[0].value; 
+            const checkOut = document.querySelectorAll('input[type="date"]')[1].value; 
+            
+            sessionStorage.setItem('searchLocation', location);
+            sessionStorage.setItem('searchType', type); 
+            sessionStorage.setItem('searchCheckIn', checkIn);
+            sessionStorage.setItem('searchCheckOut', checkOut);
+            
+            window.location.href = 'palace.html';
+        }
+    </script>
+</html>
